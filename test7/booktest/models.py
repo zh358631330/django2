@@ -1,5 +1,5 @@
 #coding=utf-8
-
+from __future__ import unicode_literals
 
 from django.db import models
 
@@ -39,3 +39,18 @@ class HeroInfo(models.Model):
 class AreaInfo(models.Model):
     atitle=models.CharField(max_length=20)
     aParent=models.ForeignKey('self',null=True,blank=True)
+
+
+class Areas(models.Model):
+    aid = models.IntegerField(primary_key=True)
+    atitle = models.CharField(max_length=20, blank=True, null=True)
+    pid = models.IntegerField('self',blank=True, null=True)
+
+    class Meta:
+
+        db_table = 'areas'
+
+class PicTest(models.Model):
+    pic = models.ImageField(upload_to='booktest/')
+
+
